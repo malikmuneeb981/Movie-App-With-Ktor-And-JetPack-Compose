@@ -1,11 +1,7 @@
 package com.example.cricket.scorrer.ktorprac.Di
 
 import com.example.cricket.scorrer.ktorprac.ApiService.ApiService
-import com.example.cricket.scorrer.ktorprac.ApiService.ApiServiceIml
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import com.example.cricket.scorrer.ktorprac.ApiService.ViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -14,17 +10,14 @@ import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
+import okhttp3.OkHttpClient
+import org.koin.core.module.dsl.viewModelOf
+import org.koin.dsl.module
 
+val KoinModule = module {
 
-@Module
-@InstallIn(SingletonComponent::class)
-object HiltModule {
-
-
-    @Provides
-    fun providesKtorClient():HttpClient{
-        return HttpClient(OkHttp) {
-
+    single<HttpClient> {
+        HttpClient(OkHttp) {
             // ✅ Content Negotiation (Auto JSON Parsing)
             install(ContentNegotiation) {
                 json(Json {
@@ -44,13 +37,9 @@ object HiltModule {
                 level = LogLevel.ALL // Logs everything (requests, responses, headers, etc.)
             }
         }
-
     }
-
-    @Provides
-    fun providesApiService(client: HttpClient):ApiService{
-        return ApiServiceIml(client)
+    single<ApiService> {
+        ApiService(get())
     }
-
-
+    viewModelOf(::ViewModel)
 }

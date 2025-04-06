@@ -35,7 +35,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.cricket.scorrer.ktorprac.ApiService.ApiService
-import com.example.cricket.scorrer.ktorprac.ApiService.ApiServiceIml
 import com.example.cricket.scorrer.ktorprac.ApiService.Baseresponse
 import com.example.cricket.scorrer.ktorprac.ApiService.ViewModel
 import com.example.cricket.scorrer.ktorprac.Composables.AppText
@@ -155,5 +154,5 @@ fun MovieSearchScreen(navController: NavController,viewModel: ViewModel) {
 @Composable
 private fun MovieSearchScreenPrev() {
 
-    MovieSearchScreen(rememberNavController(), ViewModel(ApiServiceIml(client = HttpClient())))
+    MovieSearchScreen(rememberNavController(), ViewModel(ApiService(client = HttpClient())))
 }

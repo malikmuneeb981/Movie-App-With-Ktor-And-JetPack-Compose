@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id ("org.jetbrains.kotlin.plugin.serialization")
     id("com.google.devtools.ksp")
-    id("com.google.dagger.hilt.android")
+   // id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -60,9 +60,13 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation(libs.hilt.android)
-    implementation(libs.androidx.hilt.navigation.compose)
-    ksp(libs.hilt.android.compiler)
+    implementation("androidx.navigation:navigation-compose:2.8.9")
+//    implementation(libs.hilt.android)
+//    implementation(libs.androidx.hilt.navigation.compose)
+//    ksp(libs.hilt.android.compiler)
+
+    //Koin
+    implementation(libs.androidx.koin)
 
     // Ktor Core
     implementation("io.ktor:ktor-client-core:2.3.4")

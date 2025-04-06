@@ -26,7 +26,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
-import com.example.cricket.scorrer.ktorprac.ApiService.ApiServiceIml
+import com.example.cricket.scorrer.ktorprac.ApiService.ApiService
+
 import com.example.cricket.scorrer.ktorprac.ApiService.Baseresponse
 import com.example.cricket.scorrer.ktorprac.ApiService.ViewModel
 import com.example.cricket.scorrer.ktorprac.Composables.AppText
@@ -135,5 +136,5 @@ fun MovieDetailsScreen(navController: NavController,viewModel: ViewModel) {
 @Preview
 @Composable
 private fun MovieDetialsScreenPrev() {
-    MovieDetailsScreen(rememberNavController(), ViewModel(ApiServiceIml(client = HttpClient())))
+    MovieDetailsScreen(rememberNavController(), ViewModel(ApiService(client = HttpClient())))
 }

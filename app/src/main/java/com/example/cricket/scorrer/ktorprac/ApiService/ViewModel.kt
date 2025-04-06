@@ -6,16 +6,15 @@ import com.example.cricket.scorrer.ktorprac.models.MovieSearchResponse
 import com.example.cricket.scorrer.ktorprac.models.PostsResponse
 import com.example.cricket.scorrer.ktorprac.models.Search
 import com.example.cricket.scorrer.ktorprac.models.SelectedMovieResponse
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 
-@HiltViewModel
-class ViewModel @Inject constructor(val apiService: ApiService):ViewModel() {
+
+
+class ViewModel (val apiService: ApiService):ViewModel() {
 
     private val _MovieSeachResponse = MutableStateFlow<Baseresponse<MovieSearchResponse>>(Baseresponse.Loading())
     val MovieSeachResponse:StateFlow<Baseresponse<MovieSearchResponse>>  = _MovieSeachResponse

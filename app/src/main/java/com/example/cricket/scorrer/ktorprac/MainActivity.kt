@@ -25,14 +25,15 @@ import com.example.cricket.scorrer.ktorprac.ApiService.Baseresponse
 import com.example.cricket.scorrer.ktorprac.ApiService.ViewModel
 import com.example.cricket.scorrer.ktorprac.NavGraph.Nav_Graph
 import com.example.cricket.scorrer.ktorprac.ui.theme.KtorPracTheme
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlin.getValue
 
-@AndroidEntryPoint
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val viewModel:ViewModel by viewModels()
+        val viewModel:ViewModel by viewModel()
         setContent {
             Nav_Graph(viewModel)
         }
